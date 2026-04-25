@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thulir Design & QS Services | Structural Design & Quantity Surveying, UAE</title>
+    <meta name="description" content="Structural design, rebar shop drawings, cost analysis, quantity surveys, architecture and interior design services for UAE main contractors and outsourcing partners.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    brand: {
+                        dark: '#0f172a',
+                        darker: '#020617',
+                        accent: '#3d8b6e',
+                        'accent-hover': '#2f7560',
+                        'accent-light': '#e8f5ef',
+                        warm: '#faf8f5',
+                        'warm-dark': '#f1eeea',
+                    }
+                },
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                }
+            }
+        }
+    }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .fade-up.stagger-1 { transition-delay: 0.1s; }
+        .fade-up.stagger-2 { transition-delay: 0.2s; }
+        .fade-up.stagger-3 { transition-delay: 0.3s; }
+        .fade-up.stagger-4 { transition-delay: 0.4s; }
+        .fade-up.stagger-5 { transition-delay: 0.5s; }
+        .fade-up.stagger-6 { transition-delay: 0.6s; }
+        .fade-up.stagger-7 { transition-delay: 0.7s; }
+
+        .service-card:hover .service-img { transform: scale(1.06); }
+        .service-img { transition: transform 0.7s ease; }
+
+        .portfolio-card:hover .portfolio-img { transform: scale(1.05); }
+        .portfolio-img { transition: transform 0.6s ease; }
+
+        .nav-link { color: rgba(255,255,255,0.8); transition: color 0.25s; }
+        .nav-link:hover { color: #fff; }
+        .nav-cta { background: rgba(255,255,255,0.12); color: #fff; backdrop-filter: blur(6px); transition: all 0.25s; }
+        .nav-cta:hover { background: rgba(255,255,255,0.22); }
+        .nav-logo-text { color: #fff; transition: color 0.25s; }
+        .nav-logo-sub { color: rgba(255,255,255,0.55); transition: color 0.25s; }
+        .nav-menu-icon { color: #fff; transition: color 0.25s; }
+
+        .nav-scrolled { background: rgba(250,248,245,0.92); backdrop-filter: blur(14px); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+        .nav-scrolled .nav-link { color: #475569; }
+        .nav-scrolled .nav-link:hover { color: #0f172a; }
+        .nav-scrolled .nav-cta { background: #0f172a; color: #fff; }
+        .nav-scrolled .nav-cta:hover { background: #1e293b; }
+        .nav-scrolled .nav-logo-text { color: #0f172a; }
+        .nav-scrolled .nav-logo-sub { color: #94a3b8; }
+        .nav-scrolled .nav-menu-icon { color: #0f172a; }
+
+        .process-line { height: 0; transition: height 1.2s ease-out 0.4s; }
+        .process-line.visible { height: 100%; }
+
+        .grain::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+        .mobile-menu.open { transform: translateX(0); }
+
+        .toast { transform: translateY(100px); opacity: 0; transition: all 0.4s ease; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+
+        .scroll-indicator-line { animation: scrollPulse 2s ease-in-out infinite; }
+        @keyframes scrollPulse {
+            0%, 100% { transform: translateY(0); opacity: 0.7; }
+            50% { transform: translateY(8px); opacity: 0.2; }
+        }
+
+        .lightbox { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .lightbox.open { opacity: 1; pointer-events: auto; }
+    </style>
+</head>
+<body class="font-sans text-slate-700 bg-brand-warm antialiased overflow-x-hidden">
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <!-- REPLACE: Swap this div with your actual <img> logo -->
+                <div class="w-10 h-10 bg-brand-accent rounded-sm flex items-center justify-center">
+                    <span class="text-white font-bold text-lg">T</span>
+                </div>
+                <div class="hidden sm:block">
+                    <span class="nav-logo-text font-semibold text-sm tracking-wide">THULIR</span>
+                    <span class="nav-logo-sub text-xs block -mt-0.5">Design & QS Services</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#services" class="nav-link text-sm">Services</a>
+                <a href="#portfolio" class="nav-link text-sm">Portfolio</a>
+                <a href="#process" class="nav-link text-sm">Process</a>
+                <a href="#contractors" class="nav-link text-sm">Contractors</a>
+                <a href="#partners" class="nav-link text-sm">Partners</a>
+                <a href="#contact" class="nav-cta text-sm font-medium px-5 py-2.5 rounded">Contact Us</a>
+            </div>
+
+            <button id="menuBtn" class="md:hidden p-2 nav-menu-icon" aria-label="Open menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-[60] bg-brand-warm">
+        <div class="px-6 h-20 flex items-center justify-between">
+            <span class="text-brand-dark font-semibold">THULIR</span>
+            <button id="closeMenuBtn" class="p-2 text-brand-dark" aria-label="Close menu">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <div class="flex flex-col gap-6 px-6 pt-10">
+            <a href="#services" class="mobile-link text-2xl font-medium text-brand-dark">Services</a>
+            <a href="#portfolio" class="mobile-link text-2xl font-medium text-brand-dark">Portfolio</a>
+            <a href="#process" class="mobile-link text-2xl font-medium text-brand-dark">Process</a>
+            <a href="#contractors" class="mobile-link text-2xl font-medium text-brand-dark">Contractors</a>
+            <a href="#partners" class="mobile-link text-2xl font-medium text-brand-dark">Partners</a>
+            <a href="#contact" class="mobile-link text-2xl font-medium text-brand-dark">Contact</a>
+            <div class="pt-6 border-t border-slate-200 mt-4">
+                <a href="mailto:info@thulirdesign-qs.com" class="text-slate-600 text-sm">info@thulirdesign-qs.com</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== HERO ========== -->
+    <section class="relative h-screen min-h-[700px] flex items-center justify-center grain overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80"
+             alt="Modern building facade"
+             class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-darker/85 via-brand-darker/65 to-brand-darker/35"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+            <div class="max-w-2xl">
+                <p class="text-brand-accent text-xs sm:text-sm font-medium tracking-[0.2em] uppercase mb-6 fade-up">Design & Quantity Surveying</p>
+                <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-semibold text-white leading-[1.1] tracking-tight mb-6 fade-up stagger-1">
+                    Precision in Design.<br>Accuracy in Quantity.
+                </h1>
+                <p class="text-white/70 text-lg sm:text-xl leading-relaxed mb-10 max-w-lg fade-up stagger-2">
+                    Structural design, rebar shop drawings, cost analysis, and more — trusted by main contractors across the UAE.
+                </p>
+                <div class="flex flex-wrap gap-4 fade-up stagger-3">
+                    <a href="#contact" class="bg-brand-accent text-white font-medium px-7 py-3.5 rounded hover:bg-brand-accent-hover transition-colors text-sm">
+                        Request a Quote
+                    </a>
+                    <a href="#services" class="border border-white/25 text-white font-medium px-7 py-3.5 rounded hover:bg-white/10 transition-colors text-sm">
+                        View Services
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 fade-up stagger-4">
+            <div class="w-[1px] h-14 bg-white/20 relative overflow-hidden flex flex-col justify-start">
+                <div class="w-full h-5 bg-white/60 scroll-indicator-line rounded-full"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section id="services" class="py-24 md:py-32 bg-brand-warm">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-xl mb-16 fade-up">
+                <p class="text-brand-accent text-xs font-medium tracking-[0.2em] uppercase mb-3">What We Do</p>
+                <h2 class="text-3xl md:text-4xl font-semibold text-brand-dark tracking-tight">End-to-End Design & QS Services</h2>
+                <p class="text-slate-600 mt-4 leading-relaxed">From initial concept to final takeoff — every service you need under one roof, delivered with precision.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 fade-up">
+                    <div class="h-52 overflow-hidden">
+                        <!-- REPLACE: Change src to your own structural design image -->
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80"
+                             alt="Structural analysis software interface" class="service-img w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-9 h-9 bg-brand-accent/10 rounded flex items-center justify-center mb-3">
+                            <i data-lucide="building-2" class="w-[18px] h-[18px] text-brand-accent"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-brand-dark mb-2">Structural Design</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Analysis and design of RCC, steel, and composite structures using ETABS, SAFE, and STAAD.Pro — compliant with UAE building codes and international standards.</p>
+                    </div>
+                </div>
+
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 fade-up stagger-1">
+                    <div class="h-52 overflow-hidden">
+                        <!-- REPLACE: Change src to your own rebar shop drawing image -->
+                        <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=600&q=80"
+                             alt="Rebar shop drawing technical blueprint" class="service-img w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-9 h-9 bg-brand-accent/10 rounded flex items-center justify-center mb-3">
+                            <i data-lucide="pen-tool" class="w-[18px] h-[18px] text-brand-accent"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-brand-dark mb-2">Rebar Shop Drawings</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Detailed bar bending schedules, rebar placement drawings, and detailing for all structural elements — beams, columns, slabs, footings, and walls.</p>
+                    </div>
+                </div>
+
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 fade-up stagger-2">
+                    <div class="h-52 overflow-hidden">
+                        <!-- REPLACE: Change src to your own cost analysis image -->
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80"
+                             alt="Cost analysis spreadsheet on screen" class="service-img w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-9 h-9 bg-brand-accent/10 rounded flex items-center justify-center mb-3">
+                            <i data-lucide="calculator" class="w-[18px] h-[18px] text-brand-accent"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-brand-dark mb-2">Cost Analysis</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Accurate cost estimation and rate analysis to keep your project budgets realistic and competitively priced.</p>
+                    </div>
+                </div>
+
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 fade-up stagger-3">
+                    <div class="h-52 overflow-hidden">
+                        <!-- REPLACE: Change src to your own quantity survey image -->
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80"
+                             alt="Construction drawings and measurement documents" class="service-img w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-9 h-9 bg-brand-accent/10 rounded flex items-center justify-center mb-3">
+                            <i data-lucide="ruler" class="w-[18px] h-[18px] text-brand-accent"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-brand-dark mb-2">Quantity Surveys</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Comprehensive material take-offs and BOQ preparation for precise procurement and tender submissions.</p>
+                    </div>
+                </div>
+
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 fade-up stagger-4">
+                    <div class="h-52 overflow-hidden">
+                        <!-- REPLACE: Change src to your own architecture design image -->
+                        <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=600&q=80"
+                             alt="Modern architectural building design" class="service-img w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-9 h-9 bg-brand-accent/10 rounded flex items-center justify-center mb-3">
+                            <i data-lucide="layout" class="w-[18px] h-[18px] text-brand-accent"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-brand-dark mb-2">Architecture Design</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Concept development, municipal drawing sets, and G+ drawings aligned with UAE authority requirements.</p>
+                    </div>
+                </div>
+
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 fade-up stagger-5">
+                    <div class="h-52 overflow-hidden">
+                        <!-- REPLACE: Change src to your own interior design image -->
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80"
+                             alt="Modern interior design space" class="service-img w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-9 h-9 bg-brand-accent/10 rounded flex items-center justify-center mb-3">
+                            <i data-lucide="lamp" class="w-[18px] h-[18px] text-brand-accent"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-brand-dark mb-2">Interior Design</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Functional and aesthetic interior layouts with detailed working drawings for residential and commercial spaces.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PORTFOLIO ========== -->
+    <section id="portfolio" class="py-24 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-xl mb-16 fade-up">
+                <p class="text-brand-accent text-xs font-medium tracking-[0.2em] uppercase mb-3">Our Work</p>
+                <h2 class="text-3xl md:text-4xl font-semibold text-brand-dark tracking-tight">Sample Drawings & Deliverables</h2>
+                <p class="text-slate-600 mt-4 leading-relaxed">A selection of our work across different service categories. Click to view in detail.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- PORTFOLIO ITEM 1: Replace image src and alt with your own -->
+                <div class="portfolio-card bg-brand-warm rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 fade-up cursor-pointer" onclick="openLightbox(this)">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80"
+                             alt="Sample structural design output" class="portfolio-img w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-5">
+                        <span class="text-brand-accent text-xs font-medium tracking-wider uppercase">Structural Design</span>
+                        <h3 class="font-semibold text-brand-dark mt-1 text-sm">ETABS Structural Analysis — G+5 Residential Tower</h3>
+                    </div>
+                </div>
+
+                <!-- PORTFOLIO ITEM 2 -->
+                <div class="portfolio-card bg-brand-warm rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 fade-up stagger-1 cursor-pointer" onclick="openLightbox(this)">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80"
+                             alt="Sample rebar shop drawing" class="portfolio-img w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-5">
+                        <span class="text-brand-accent text-xs font-medium tracking-wider uppercase">Rebar Detailing</span>
+                        <h3 class="font-semibold text-brand-dark mt-1 text-sm">Beam & Column Rebar Shop Drawing — Commercial Building</h3>
+                    </div>
+                </div>
+
+                <!-- PORTFOLIO ITEM 3 -->
+                <div class="portfolio-card bg-brand-warm rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 fade-up stagger-2 cursor-pointer" onclick="openLightbox(this)">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=600&q=80"
+                             alt="Sample slab rebar detailing" class="portfolio-img w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-5">
+                        <span class="text-brand-accent text-xs font-medium tracking-wider uppercase">Rebar Detailing</span>
+                        <h3 class="font-semibold text-brand-dark mt-1 text-sm">Slab Rebar Placement Drawing — Residential Villa</h3>
+                    </div>
+                </div>
+
+                <!-- PORTFOLIO ITEM 4 -->
+                <div class="portfolio-card bg-brand-warm rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 fade-up stagger-3 cursor-pointer" onclick="openLightbox(this)">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80"
+                             alt="Sample BOQ quantity survey" class="portfolio-img w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-5">
+                        <span class="text-brand-accent text-xs font-medium tracking-wider uppercase">Quantity Survey</span>
+                        <h3 class="font-semibold text-brand-dark mt-1 text-sm">Material Take-Off & BOQ — Mixed-Use Development</h3>
+                    </div>
+                </div>
+
+                <!-- PORTFOLIO ITEM 5: PDF Download Card -->
+                <div class="portfolio-card bg-brand-warm rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 fade-up stagger-4">
+                    <div class="h-56 overflow-hidden flex items-center justify-center bg-brand-dark/5">
+                        <div class="text-center px-6">
+                            <div class="w-16 h-16 bg-brand-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="file-text" class="w-8 h-8 text-brand-accent"></i>
+                            </div>
+                            <p class="text-brand-dark font-semibold text-sm">Sample BOQ Sheet</p>
+                            <p class="text-slate-500 text-xs mt-1">PDF Document</p>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-brand-accent text-xs font-medium tracking-wider uppercase">Quantity Survey</span>
+                        <h3 class="font-semibold text-brand-dark mt-1 text-sm">Download Sample BOQ Format</h3>
+                        <!-- REPLACE: Change href to your actual PDF file path, e.g. href="files/sample-boq.pdf" -->
+                        <a href="#" onclick="event.stopPropagation(); alert('Replace this link with your actual PDF file path (e.g. files/sample-boq.pdf)'); return false;"
+                           class="inline-flex items-center gap-1.5 text-brand-accent text-xs font-medium mt-2 hover:underline">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                            Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PORTFOLIO ITEM 6: PDF Download Card -->
+                <div class="portfolio-card bg-brand-warm rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 fade-up stagger-5">
+                    <div class="h-56 overflow-hidden flex items-center justify-center bg-brand-dark/5">
+                        <div class="text-center px-6">
+                            <div class="w-16 h-16 bg-brand-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="file-text" class="w-8 h-8 text-brand-accent"></i>
+                            </div>
+                            <p class="text-brand-dark font-semibold text-sm">Sample Bar Bending Schedule</p>
+                            <p class="text-slate-500 text-xs mt-1">PDF Document</p>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-brand-accent text-xs font-medium tracking-wider uppercase">Rebar Detailing</span>
+                        <h3 class="font-semibold text-brand-dark mt-1 text-sm">Download Sample BBS Format</h3>
+                        <!-- REPLACE: Change href to your actual PDF file path -->
+                        <a href="#" onclick="event.stopPropagation(); alert('Replace this link with your actual PDF file path (e.g. files/sample-bbs.pdf)'); return false;"
+                           class="inline-flex items-center gap-1.5 text-brand-accent text-xs font-medium mt-2 hover:underline">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                            Download PDF
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== LIGHTBOX ========== -->
+    <div id="lightbox" class="lightbox fixed inset-0 z-[70] bg-black/90 flex items-center justify-center p-4 sm:p-8" onclick="closeLightbox()">
+        <button class="absolute top-5 right-5 text-white/70 hover:text-white transition-colors" aria-label="Close">
+            <i data-lucide="x" class="w-7 h-7"></i>
+        </button>
+        <img id="lightboxImg" src="" alt="" class="max-w-full max-h-[90vh] object-contain rounded" onclick="event.stopPropagation()">
+    </div>
+
+    <!-- ========== PROCESS ========== -->
+    <section id="process" class="py-24 md:py-32 bg-brand-warm">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-xl mx-auto mb-20 fade-up">
+                <p class="text-brand-accent text-xs font-medium tracking-[0.2em] uppercase mb-3">How We Work</p>
+                <h2 class="text-3xl md:text-4xl font-semibold text-brand-dark tracking-tight">From Enquiry to Delivery</h2>
+                <p class="text-slate-600 mt-4 leading-relaxed">A structured workflow that keeps your project on track, on budget, and on schedule.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-0 relative">
+                <div class="hidden md:block absolute top-10 left-[12.5%] right-[12.5%] h-[2px] bg-slate-200">
+                    <div class="process-line h-full bg-brand-accent origin-left"></div>
+                </div>
+
+                <div class="relative text-center px-4 pb-12 md:pb-0 fade-up">
+                    <div class="w-20 h-20 rounded-full bg-white border-2 border-brand-accent flex items-center justify-center mx-auto mb-6 relative z-10">
+                        <i data-lucide="message-square" class="w-7 h-7 text-brand-accent"></i>
+                    </div>
+                    <span class="text-brand-accent text-xs font-semibold tracking-wider uppercase">Step 01</span>
+                    <h3 class="font-semibold text-brand-dark mt-1 mb-2">Enquiry & Scope</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Share your project requirements. We review available drawings and define the exact scope of work.</p>
+                </div>
+
+                <div class="relative text-center px-4 pb-12 md:pb-0 fade-up stagger-1">
+                    <div class="w-20 h-20 rounded-full bg-white border-2 border-brand-accent flex items-center justify-center mx-auto mb-6 relative z-10">
+                        <i data-lucide="search" class="w-7 h-7 text-brand-accent"></i>
+                    </div>
+                    <span class="text-brand-accent text-xs font-semibold tracking-wider uppercase">Step 02</span>
+                    <h3 class="font-semibold text-brand-dark mt-1 mb-2">Technical Review</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Our engineers assess feasibility, identify challenges early, and propose the best technical approach.</p>
+                </div>
+
+                <div class="relative text-center px-4 pb-12 md:pb-0 fade-up stagger-2">
+                    <div class="w-20 h-20 rounded-full bg-white border-2 border-brand-accent flex items-center justify-center mx-auto mb-6 relative z-10">
+                        <i data-lucide="drafting-compass" class="w-7 h-7 text-brand-accent"></i>
+                    </div>
+                    <span class="text-brand-accent text-xs font-semibold tracking-wider uppercase">Step 03</span>
+                    <h3 class="font-semibold text-brand-dark mt-1 mb-2">Execution</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Design and drafting carried out with regular progress updates and intermediate review milestones.</p>
+                </div>
+
+                <div class="relative text-center px-4 fade-up stagger-3">
+                    <div class="w-20 h-20 rounded-full bg-white border-2 border-brand-accent flex items-center justify-center mx-auto mb-6 relative z-10">
+                        <i data-lucide="check-circle" class="w-7 h-7 text-brand-accent"></i>
+                    </div>
+                    <span class="text-brand-accent text-xs font-semibold tracking-wider uppercase">Step 04</span>
+                    <h3 class="font-semibold text-brand-dark mt-1 mb-2">Delivery & Support</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Final outputs delivered in your required format, with post-delivery clarifications included at no extra cost.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOR MAIN CONTRACTORS ========== -->
+    <section id="contractors" class="py-24 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="fade-up order-2 lg:order-1">
+                    <p class="text-brand-accent text-xs font-medium tracking-[0.2em] uppercase mb-3">For Main Contractors</p>
+                    <h2 class="text-3xl md:text-4xl font-semibold text-brand-dark tracking-tight mb-6">Built for UAE's Leading Contractors</h2>
+                    <p class="text-slate-600 leading-relaxed mb-8">
+                        Whether you're building towers in Dubai, villas in Abu Dhabi, or industrial facilities in Sharjah — we integrate seamlessly into your project workflow.
+                    </p>
+
+                    <div class="space-y-5">
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded bg-brand-accent/10 flex items-center justify-center shrink-0 mt-0.5">
+                                <i data-lucide="shield-check" class="w-5 h-5 text-brand-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-brand-dark text-sm mb-1">UAE Code Compliant</h4>
+                                <p class="text-slate-600 text-sm">All designs follow Dubai Municipality, Abu Dhabi, and relevant authority guidelines.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded bg-brand-accent/10 flex items-center justify-center shrink-0 mt-0.5">
+                                <i data-lucide="clock" class="w-5 h-5 text-brand-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-brand-dark text-sm mb-1">Fast Turnaround</h4>
+                                <p class="text-slate-600 text-sm">Strict deadline adherence without compromising on quality or detail accuracy.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded bg-brand-accent/10 flex items-center justify-center shrink-0 mt-0.5">
+                                <i data-lucide="user-check" class="w-5 h-5 text-brand-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-brand-dark text-sm mb-1">Dedicated Project Engineer</h4>
+                                <p class="text-slate-600 text-sm">Single point of contact who understands your project inside out — no runarounds.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded bg-brand-accent/10 flex items-center justify-center shrink-0 mt-0.5">
+                                <i data-lucide="file-output" class="w-5 h-5 text-brand-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-brand-dark text-sm mb-1">Flexible Output Formats</h4>
+                                <p class="text-slate-600 text-sm">AutoCAD, Revit, PDF, Excel — delivered exactly in the format your team works with.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-up stagger-2 order-1 lg:order-2">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80"
+                             alt="Large-scale construction site in UAE"
+                             class="rounded-lg w-full h-[400px] lg:h-[520px] object-cover shadow-lg" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== WORK WITH US ========== -->
+    <section id="partners" class="py-24 md:py-32 bg-brand-dark relative grain overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-16 fade-up">
+                <p class="text-brand-accent text-xs font-medium tracking-[0.2em] uppercase mb-3">Work With Us</p>
+                <h2 class="text-3xl md:text-4xl font-semibold text-white tracking-tight">Are You a Design or Detailing Firm?</h2>
+                <p class="text-slate-300 mt-4 leading-relaxed">
+                    If your team specialises in structural design, rebar detailing, architecture, interior design, or quantity surveying — we'd like to know about your capabilities.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl mx-auto">
+                <div class="bg-white/[0.04] border border-white/[0.08] rounded-lg p-6 fade-up hover:bg-white/[0.08] transition-colors duration-300">
+                    <div class="w-12 h-12 rounded-lg bg-brand-accent/15 flex items-center justify-center mb-5">
+                        <i data-lucide="pencil-ruler" class="w-6 h-6 text-brand-accent"></i>
+                    </div>
+                    <h3 class="text-white font-semibold mb-2">Design Skills</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">Structural design, architecture, or interior design — tell us what your team is strong at.</p>
+                </div>
+
+                <div class="bg-white/[0.04] border border-white/[0.08] rounded-lg p-6 fade-up stagger-1 hover:bg-white/[0.08] transition-colors duration-300">
+                    <div class="w-12 h-12 rounded-lg bg-brand-accent/15 flex items-center justify-center mb-5">
+                        <i data-lucide="file-check" class="w-6 h-6 text-brand-accent"></i>
+                    </div>
+                    <h3 class="text-white font-semibold mb-2">Detailing Skills</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">Rebar shop drawings, BOQ preparation, cost analysis — if you do detailing work, we want to hear from you.</p>
+                </div>
+
+                <div class="bg-white/[0.04] border border-white/[0.08] rounded-lg p-6 fade-up stagger-2 hover:bg-white/[0.08] transition-colors duration-300">
+                    <div class="w-12 h-12 rounded-lg bg-brand-accent/15 flex items-center justify-center mb-5">
+                        <i data-lucide="monitor" class="w-6 h-6 text-brand-accent"></i>
+                    </div>
+                    <h3 class="text-white font-semibold mb-2">Software Proficiency</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">AutoCAD, ETABS, SAFE, STAAD.Pro, Tekla, Cads RC, RebarCAD — share what your team works with.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 fade-up">
+                <a href="#contact"
+                   class="inline-flex items-center gap-2 bg-brand-accent text-white font-medium px-7 py-3.5 rounded hover:bg-brand-accent-hover transition-colors duration-300 text-sm">
+                    Tell Us About Your Team
+                    <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== INDUSTRIES ========== -->
+    <section class="py-24 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-xl mx-auto mb-16 fade-up">
+                <p class="text-brand-accent text-xs font-medium tracking-[0.2em] uppercase mb-3">Sectors We Serve</p>
+                <h2 class="text-3xl md:text-4xl font-semibold text-brand-dark tracking-tight">Across Every Construction Sector</h2>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
+                <div class="text-center p-6 rounded-lg bg-brand-warm hover:bg-brand-accent/10 transition-colors duration-300 fade-up group cursor-default">
+                    <i data-lucide="home" class="w-8 h-8 text-brand-accent mx-auto mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                    <p class="text-sm font-medium text-brand-dark">Residential</p>
+                </div>
+                <div class="text-center p-6 rounded-lg bg-brand-warm hover:bg-brand-accent/10 transition-colors duration-300 fade-up stagger-1 group cursor-default">
+                    <i data-lucide="building" class="w-8 h-8 text-brand-accent mx-auto mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                    <p class="text-sm font-medium text-brand-dark">Commercial</p>
+                </div>
+                <div class="text-center p-6 rounded-lg bg-brand-warm hover:bg-brand-accent/10 transition-colors duration-300 fade-up stagger-2 group cursor-default">
+                    <i data-lucide="factory" class="w-8 h-8 text-brand-accent mx-auto mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                    <p class="text-sm font-medium text-brand-dark">Industrial</p>
+                </div>
+                <div class="text-center p-6 rounded-lg bg-brand-warm hover:bg-brand-accent/10 transition-colors duration-300 fade-up stagger-3 group cursor-default">
+                    <i data-lucide="road" class="w-8 h-8 text-brand-accent mx-auto mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                    <p class="text-sm font-medium text-brand-dark">Infrastructure</p>
+                </div>
+                <div class="text-center p-6 rounded-lg bg-brand-warm hover:bg-brand-accent/10 transition-colors duration-300 fade-up stagger-4 group cursor-default">
+                    <i data-lucide="layers" class="w-8 h-8 text-brand-accent mx-auto mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                    <p class="text-sm font-medium text-brand-dark">Mixed-Use</p>
+                </div>
+                <div class="text-center p-6 rounded-lg bg-brand-warm hover:bg-brand-accent/10 transition-colors duration-300 fade-up stagger-5 group cursor-default">
+                    <i data-lucide="hammer" class="w-8 h-8 text-brand-accent mx-auto mb-3 group-hover:scale-110 transition-transform duration-300"></i>
+                    <p class="text-sm font-medium text-brand-dark">Renovation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SOFTWARE & CODES ========== -->
+    <section class="py-14 bg-brand-warm border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-center text-xs text-slate-500 tracking-[0.2em] uppercase mb-7 fade-up">Software & Codes We Work With</p>
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 fade-up stagger-1">
+                <span class="text-slate-600 font-medium text-sm">AutoCAD</span>
+                <span class="text-slate-300">·</span>
+                <span class="text-slate-600 font-medium text-sm">Cads RC</span>
+                <span class="text-slate-300">·</span>
+                <span class="text-slate-600 font-medium text-sm">RebarCAD</span>
+                <span class="text-slate-300">·</span>
+                <span class="text-slate-600 font-medium text-sm">ETABS</span>
+                <span class="text-slate-300">·</span>
+                <span class="text-slate-600 font-medium text-sm">SAFE</span>
+                <span class="text-slate-300">·</span>
+                <span class="text-slate-600 font-medium text-sm">STAAD.Pro</span>
+                <span class="text-slate-300">·</span>
+                <span class="text-slate-600 font-medium text-sm">Tekla</span>
+                <span class="text-slate-300">·</span>
+                <span class="text-slate-600 font-medium text-sm">BS Codes</span>
+                <span class="text-slate-300">·</span>
+                <span class="text-slate-600 font-medium text-sm">ACI Codes</span>
+                <span class="text-slate-300">·</span>
+                <span class="text-slate-600 font-medium text-sm">UK Standards</span>
+                <span class="text-slate-300">·</span>
+                <span class="text-slate-600 font-medium text-sm">Dubai Municipality</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="contact" class="py-24 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
+                <div class="fade-up">
+                    <p class="text-brand-accent text-xs font-medium tracking-[0.2em] uppercase mb-3">Get In Touch</p>
+                    <h2 class="text-3xl md:text-4xl font-semibold text-brand-dark tracking-tight mb-6">Start a Conversation</h2>
+                    <p class="text-slate-600 leading-relaxed mb-10">
+                        Have a project in mind? Need a quotation? Or represent a design firm looking for opportunities? Drop us a message — we respond within 24 hours.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-brand-accent/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5 text-brand-accent"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 uppercase tracking-wider mb-0.5">Email</p>
+                                <a href="mailto:info@thulirdesign-qs.com" class="text-brand-dark font-medium hover:text-brand-accent transition-colors">info@thulirdesign-qs.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-brand-accent/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-brand-accent"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 uppercase tracking-wider mb-0.5">Location</p>
+                                <p class="text-brand-dark font-medium">United Arab Emirates</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-brand-accent/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="clock" class="w-5 h-5 text-brand-accent"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 uppercase tracking-wider mb-0.5">Working Hours</p>
+                                <p class="text-brand-dark font-medium">Mon – Sat, 9:00 AM – 6:00 PM (GST)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-up stagger-2">
+                    <!--
+                        FORMSPREE SETUP (do this once, takes 2 minutes):
+                        1. Go to https://formspree.io/
+                        2. Sign up free with your email (info@thulirdesign-qs.com)
+                        3. Click "New Form" → give it a name like "Website Contact"
+                        4. Copy the form ID from the URL (looks like xyzabcde)
+                        5. Replace YOUR_FORMSPREE_ID below with that ID
+                    -->
+                    <form id="contactForm" class="bg-brand-warm rounded-lg p-7 sm:p-8">
+                        <div class="space-y-5">
+                            <div>
+                                <label class="block text-sm font-medium text-brand-dark mb-1.5">Your Name</label>
+                                <input type="text" name="name" required
+                                       class="w-full px-4 py-3 bg-white border border-slate-200 rounded text-sm text-brand-dark placeholder:text-slate-400 focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/30 transition-colors"
+                                       placeholder="Company or personal name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-brand-dark mb-1.5">Email Address</label>
+                                <input type="email" name="email" required
+                                       class="w-full px-4 py-3 bg-white border border-slate-200 rounded text-sm text-brand-dark placeholder:text-slate-400 focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/30 transition-colors"
+                                       placeholder="you@company.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-brand-dark mb-1.5">Enquiry Type</label>
+                                <select name="service" required
+                                        class="w-full px-4 py-3 bg-white border border-slate-200 rounded text-sm text-brand-dark focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/30 transition-colors appearance-none"
+                                        style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2394a3b8%22 stroke-width=%222%22><polyline points=%226 9 12 15 18 9%22/></svg>'); background-repeat: no-repeat; background-position: right 12px center;">
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option>Structural Design</option>
+                                    <option>Rebar Shop Drawings</option>
+                                    <option>Cost Analysis</option>
+                                    <option>Quantity Surveys</option>
+                                    <option>Architecture Design</option>
+                                    <option>Interior Design</option>
+                                    <option>Multiple Services</option>
+                                    <option>Work Opportunity</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-brand-dark mb-1.5">Details</label>
+                                <textarea name="details" rows="4"
+                                          class="w-full px-4 py-3 bg-white border border-slate-200 rounded text-sm text-brand-dark placeholder:text-slate-400 focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/30 transition-colors resize-none"
+                                          placeholder="Brief description of your project, requirement, or your team's capabilities..."></textarea>
+                            </div>
+                            <button type="submit" id="submitBtn"
+                                    class="w-full bg-brand-dark text-white font-medium py-3.5 rounded hover:bg-slate-800 transition-colors text-sm">
+                                Send Enquiry
+                            </button>
+                            <p class="text-xs text-slate-500 text-center">We'll respond within 24 hours via email.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-brand-dark py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <a href="#" class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-brand-accent rounded-sm flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">T</span>
+                    </div>
+                    <div>
+                        <span class="text-white font-semibold text-sm">THULIR</span>
+                        <span class="text-slate-500 text-xs block -mt-0.5">Design & QS Services</span>
+                    </div>
+                </a>
+                <div class="flex items-center gap-8">
+                    <a href="#services" class="text-slate-400 text-sm hover:text-white transition-colors">Services</a>
+                    <a href="#portfolio" class="text-slate-400 text-sm hover:text-white transition-colors">Portfolio</a>
+                    <a href="#process" class="text-slate-400 text-sm hover:text-white transition-colors">Process</a>
+                    <a href="#contractors" class="text-slate-400 text-sm hover:text-white transition-colors">Contractors</a>
+                    <a href="#partners" class="text-slate-400 text-sm hover:text-white transition-colors">Partners</a>
+                </div>
+                <a href="mailto:info@thulirdesign-qs.com" class="text-brand-accent text-sm hover:underline">info@thulirdesign-qs.com</a>
+            </div>
+            <div class="border-t border-white/10 mt-8 pt-8 text-center">
+                <p class="text-slate-500 text-xs">&copy; 2025 Thulir Design & QS Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== TOAST ========== -->
+    <div id="toast" class="toast fixed bottom-6 right-6 bg-brand-dark text-white px-6 py-4 rounded-lg shadow-2xl z-50 flex items-start gap-3 max-w-sm">
+        <i data-lucide="check-circle" class="w-5 h-5 text-green-400 shrink-0 mt-0.5"></i>
+        <div>
+            <p class="text-sm font-medium">Enquiry sent successfully!</p>
+            <p class="text-xs text-slate-400 mt-0.5">We'll get back to you within 24 hours.</p>
+        </div>
+    </div>
+
+    <!-- ========== BACK TO TOP ========== -->
+    <button id="backToTop" class="fixed bottom-6 left-6 w-10 h-10 bg-brand-dark text-white rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-slate-800 z-40" aria-label="Back to top">
+        <i data-lucide="chevron-up" class="w-5 h-5"></i>
+    </button>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script>
+        lucide.createIcons();
+
+        // Mobile menu
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        });
+        menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+        closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+        // Navbar scroll
+        const navbar = document.getElementById('navbar');
+        const heroEl = document.querySelector('section');
+        function updateNav() {
+            const heroBottom = heroEl.offsetTop + heroEl.offsetHeight - 80;
+            navbar.classList.toggle('nav-scrolled', window.scrollY > heroBottom);
+        }
+        window.addEventListener('scroll', updateNav, { passive: true });
+        updateNav();
+
+        // Scroll reveal
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    const line = entry.target.querySelector('.process-line');
+                    if (line) line.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.fade-up').forEach(el => revealObserver.observe(el));
+
+        // Lightbox
+        function openLightbox(card) {
+            const img = card.querySelector('.portfolio-img');
+            if (!img) return;
+            document.getElementById('lightboxImg').src = img.src;
+            document.getElementById('lightbox').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+        // ============================================
+        // FORMSPREE FORM SUBMISSION
+        // ============================================
+        // STEP 1: Go to https://formspree.io/ and sign up
+        // STEP 2: Create a new form
+        // STEP 3: Copy your form ID (e.g. xyzabcde)
+        // STEP 4: Replace 'YOUR_FORMSPREE_ID' below with your actual ID
+        // ============================================
+        const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
+
+        const contactForm = document.getElementById('contactForm');
+        const toast = document.getElementById('toast');
+        const submitBtn = document.getElementById('submitBtn');
+        let toastTimer;
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // If Formspree ID not set, show setup instruction
+            if (FORMSPREE_ID === 'YOUR_FORMSPREE_ID') {
+                alert('Formspree is not configured yet.\n\nSteps:\n1. Go to formspree.io and sign up free\n2. Create a new form\n3. Copy the form ID from the URL\n4. In index.html, find YOUR_FORMSPREE_ID and replace it with your ID\n5. Re-upload to Netlify');
+                return;
+            }
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            try {
+                const response = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    toast.classList.add('show');
+                    clearTimeout(toastTimer);
+                    toastTimer = setTimeout(() => toast.classList.remove('show'), 5000);
+                    contactForm.reset();
+                } else {
+                    alert('Something went wrong. Please email us directly at info@thulirdesign-qs.com');
+                }
+            } catch (err) {
+                alert('Connection error. Please email us directly at info@thulirdesign-qs.com');
+            }
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Enquiry';
+        });
+
+        // Back to top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) {
+                backToTop.classList.remove('opacity-0', 'pointer-events-none');
+                backToTop.classList.add('opacity-100');
+            } else {
+                backToTop.classList.add('opacity-0', 'pointer-events-none');
+                backToTop.classList.remove('opacity-100');
+            }
+        }, { passive: true });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    </script>
+</body>
+</html>
