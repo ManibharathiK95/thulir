@@ -74,6 +74,7 @@
         .nav-scrolled .nav-logo-text { color: #0f172a; }
         .nav-scrolled .nav-logo-sub { color: #94a3b8; }
         .nav-scrolled .nav-menu-icon { color: #0f172a; }
+        .nav-scrolled .logo-box { border-color: rgba(15,23,42,0.15) !important; }
 
         .process-line { height: 0; transition: height 1.2s ease-out 0.4s; }
         .process-line.visible { height: 100%; }
@@ -109,9 +110,10 @@
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3">
+                <!-- REPLACE: Swap this div with your actual <img> logo -->
                 <img src="logo.png" alt="Thulir Design & QS Services" class="h-10 w-auto">
                 <div class="hidden sm:block">
-                    <span class="nav-logo-text font-semibold text-sm tracking-wide">Thulir</span>
+                    <span class="nav-logo-text font-semibold text-sm tracking-wide">THULIR</span>
                     <span class="nav-logo-sub text-xs block -mt-0.5">Design & QS Services</span>
                 </div>
             </a>
@@ -125,7 +127,7 @@
                 <a href="#contact" class="nav-cta text-sm font-medium px-5 py-2.5 rounded">Contact Us</a>
             </div>
 
-            <button id="menuBtn" class="md:hidden p-2 nav-menu-icon" aria-label="Open menu">
+            <button id="menuBtn" class="md:hidden p-2 nav-menu-icon ml-auto" aria-label="Open menu">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
@@ -680,14 +682,6 @@
                 </div>
 
                 <div class="fade-up stagger-2">
-                    <!--
-                        FORMSPREE SETUP (do this once, takes 2 minutes):
-                        1. Go to https://formspree.io/
-                        2. Sign up free with your email (info@thulirdesign-qs.com)
-                        3. Click "New Form" → give it a name like "Website Contact"
-                        4. Copy the form ID from the URL (looks like xyzabcde)
-                        5. Replace YOUR_FORMSPREE_ID below with that ID
-                    -->
                     <form id="contactForm" class="bg-brand-warm rounded-lg p-7 sm:p-8">
                         <div class="space-y-5">
                             <div>
@@ -739,15 +733,15 @@
     <!-- ========== FOOTER ========== -->
     <footer class="bg-brand-dark py-12">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <a href="#" class="flex items-center gap-3">
-                    <img src="logo.png" alt="Thulir Design & QS Services" class="h-10 w-auto">
+                    <img src="logo.png" alt="Thulir Design & QS Services" class="h-8 w-auto">
                     <div>
                         <span class="text-white font-semibold text-sm">THULIR</span>
                         <span class="text-slate-500 text-xs block -mt-0.5">Design & QS Services</span>
                     </div>
                 </a>
-                <div class="flex items-center gap-8">
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
                     <a href="#services" class="text-slate-400 text-sm hover:text-white transition-colors">Services</a>
                     <a href="#portfolio" class="text-slate-400 text-sm hover:text-white transition-colors">Portfolio</a>
                     <a href="#process" class="text-slate-400 text-sm hover:text-white transition-colors">Process</a>
@@ -826,14 +820,7 @@
         }
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 
-        // ============================================
-        // FORMSPREE FORM SUBMISSION
-        // ============================================
-        // STEP 1: Go to https://formspree.io/ and sign up
-        // STEP 2: Create a new form
-        // STEP 3: Copy your form ID (e.g. xyzabcde)
-        // STEP 4: Replace 'YOUR_FORMSPREE_ID' below with your actual ID
-        // ============================================
+        // Formspree
         const FORMSPREE_ID = 'mnjlrdjd';
 
         const contactForm = document.getElementById('contactForm');
@@ -844,13 +831,6 @@
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // If Formspree ID not set, show setup instruction
-            if (FORMSPREE_ID === 'YOUR_FORMSPREE_ID') {
-                alert('Formspree is not configured yet.\n\nSteps:\n1. Go to formspree.io and sign up free\n2. Create a new form\n3. Copy the form ID from the URL\n4. In index.html, find YOUR_FORMSPREE_ID and replace it with your ID\n5. Re-upload to Netlify');
-                return;
-            }
-
-            // Show loading state
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
 
